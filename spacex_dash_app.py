@@ -77,7 +77,8 @@ def get_pie_chart(entered_site):
 def get_scatter_plot(entered_site, range_value):
     filtered_df = spacex_df
     if entered_site == 'ALL':
-        fig = px.scatter(filtered_df, x = 'Payload Mass (kg)', y='class',
+        filtered_df1 = filtered_df[(filtered_df['Payload Mass (kg)'] >= range_value[0]) & (filtered_df['Payload Mass (kg)'] <= range_value[1])]
+        fig = px.scatter(filtered_df1, x = 'Payload Mass (kg)', y='class',
         color="Booster Version Category",
         # names='Launch Site', 
         title='All Launch Site')
